@@ -1,0 +1,20 @@
+.h-grid {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.h-grid-row {
+    height: 40px;
+}
+
+.h-grid-body .h-grid-row:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.h-grid-col,
+.h-grid-header {
+    border-bottom: 1px solid rgb(226, 226, 226);
+    height: 100%;
+    padding: 0px 20px;
+    text-align: left;
+}

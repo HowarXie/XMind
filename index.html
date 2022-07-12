@@ -1,0 +1,96 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xmind Interview</title>
+    <link href="./index.css" rel="stylesheet" />
+    <link href="./src/libraries/h-grid.css" rel="stylesheet" />
+</head>
+
+<body>
+    <script src="./src/util.js"></script>
+    <script src="./src/event-emitter.js"></script>
+    <script src="./src/file-loader.js" defer></script>
+    <script src="./src/libraries/h-grid.js" defer></script>
+    <script src="./src/libraries/chart.js" defer></script>
+    <script src="./index.js" defer></script>
+    <header>
+        <input type="file" accept=".csv" multiple id="fileInput" />
+    </header>
+    <main>
+        <section class="filter-area">
+            <div class="h-select">
+                <label for="mouth">月份</label>
+                <select id="mouth">
+                    <option value="all" selected>全部</option>
+                    <option value="0">1月</option>
+                    <option value="1">2月</option>
+                    <option value="2">3月</option>
+                    <option value="3">4月</option>
+                    <option value="4">5月</option>
+                    <option value="5">6月</option>
+                    <option value="6">7月</option>
+                    <option value="7">8月</option>
+                    <option value="8">9月</option>
+                    <option value="9">10月</option>
+                    <option value="10">11月</option>
+                    <option value="11">12月</option>
+                </select>
+            </div>
+            <div class="h-select">
+                <label for="category">分类</label>
+                <select id="category">
+                    <option value="all" selected>全部</option>
+                </select>
+            </div>
+            <button type="button" onclick="showAddDialog()">新增</button>
+        </section>
+        <section class="amount-area">
+            <p>当前月份： 收入<span id="income">0.00</span> | 支出<span id="expenses">0.00</span></p>
+        </section>
+        <section class="visual-area">
+            <div class="visual-area-grid" id="grid"></div>
+            <div class="visual-area-chart" id="chart">
+                <p class="chart-title">当前月份支出统计</p>
+                <canvas width="400" height="300" id="canvas"></canvas>
+            </div>
+        </section>
+    </main>
+    <div class="popup" id="popup">
+        <div class="dialog">
+            <div class="dialog-header">新增账单</div>
+            <div class="dialog-body">
+                <div class="form-item">
+                    <span class="form-item-label">类型</span>
+                    <label>
+                        <input type="radio" name="type" value="1" checked />
+                        收入
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="0" />
+                        支出
+                    </label>
+                </div>
+                <div class="form-item">
+                    <div class="h-select">
+                        <label for="dialogCategory">分类</label>
+                        <select id="dialogCategory">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <span class="form-item-label">数量</span>
+                    <input type="number" value="0" id="amount" min="0"/>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button type="botton" onclick="cancelAdd()">取消</button>
+                <button type="botton" onclick="addBill()">确定</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
